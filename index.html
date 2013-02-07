@@ -36,6 +36,13 @@
   var tube  = new THREE.Mesh(shape, cover);
   scene.add(tube);
   tube.rotation.set(0.5,0,0);
+  tube.position.set(0, 250, -250);
+  
+  var shape = new THREE.PlaneGeometry(300,100);
+  var cover = new THREE.MeshNormalMaterial();
+  var ground = new THREE.Mesh(shape, cover);
+  scene.add(ground);
+  ground.rotation.set(-1, 0, 0);
 
 
   // Now, show what the camera sees on the screen:
