@@ -18,7 +18,7 @@
   document.body.appendChild(renderer.domElement);
 
   // ******** START CODING ON THE NEXT LINE ********
-  var shape = new THREE.SphereGeometry(100);
+  var shape = new THREE.SphereGeometry(100, 20, 15);
   var cover = new THREE.MeshNormalMaterial();
   var ball  = new THREE.Mesh(shape, cover);
   scene.add(ball);
