@@ -18,7 +18,30 @@
   document.body.appendChild(renderer.domElement);
 
   // ******** START CODING ON THE NEXT LINE ********
+  var cover = new THREE.MeshNormalMaterial();
+  var body = new THREE.SphereGeometry(100);
+  var player = new THREE.Mesh(body, cover);
+  scene.add(player);
   
+  var hand = new THREE.SphereGeometry(50);
+  
+  var right_hand = new THREE.Mesh(hand, cover);
+  right_hand.position.set(-150, 0, 0);
+  scene.add(right_hand);
+  
+  var left_hand = new THREE.Mesh(hand, cover);
+  left_hand.position.set(150, 0, 0);
+  scene.add(left_hand);
+  
+  var foot = new THREE.SphereGeometry(50);
+  
+  var right_foot = new THREE.Mesh(foot, cover);
+  right_foot.position.set(-75, -125, 0);
+  scene.add(right_foot);
+  
+  var left_foot = new THREE.Mesh(foot, cover);
+  left_foot.position.set(75, -125, 0);
+  scene.add(left_foot);
 
   // Now, show what the camera sees on the screen:
   renderer.render(scene, camera);
