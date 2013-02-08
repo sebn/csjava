@@ -77,6 +77,12 @@
       case 40: // down
         player.position.z = player.position.z + 5;
         break;
+      case 67: // c
+        is_cartwheeling = ! is_cartwheeling;
+        break;
+      case 70: // f
+        is_flipping = ! is_flipping;
+        break;
     }
     event.preventDefault();
   });
