@@ -19,29 +19,54 @@
 
   // ******** START CODING ON THE NEXT LINE ********
   var cover = new THREE.MeshNormalMaterial();
-  var body = new THREE.SphereGeometry(100);
+  var body = new THREE.CylinderGeometry(1, 150, 150, 8);
   var player = new THREE.Mesh(body, cover);
   scene.add(player);
   
+  var head_shape = new THREE.SphereGeometry(100);
+  var head = new THREE.Mesh(head_shape, cover);
+  head.position.set(0, 175, 0);
+  scene.add(head);
+  
   var hand = new THREE.SphereGeometry(50);
+  var arm = new THREE.CylinderGeometry(5, 5, 100, 4);
   
   var right_hand = new THREE.Mesh(hand, cover);
-  right_hand.position.set(-150, 0, 0);
+  right_hand.position.set(-150, 25, 0);
   scene.add(right_hand);
   
+  var right_arm = new THREE.Mesh(arm, cover);
+  right_arm.rotation.set(-Math.PI/2, 0, -Math.PI/2);
+  right_arm.position.set(-100, 25, 0);
+  scene.add(right_arm);
+  
   var left_hand = new THREE.Mesh(hand, cover);
-  left_hand.position.set(150, 0, 0);
+  left_hand.position.set(150, 25, 0);
   scene.add(left_hand);
   
+  var left_arm = new THREE.Mesh(arm, cover);
+  left_arm.rotation.set(-Math.PI/2, 0, -Math.PI/2);
+  left_arm.position.set(100, 25, 0);
+  scene.add(left_arm);
+  
   var foot = new THREE.SphereGeometry(50);
+  var leg = new THREE.CylinderGeometry(5, 5, 100, 4);
   
   var right_foot = new THREE.Mesh(foot, cover);
-  right_foot.position.set(-75, -125, 0);
+  right_foot.position.set(-75, -200, 0);
   scene.add(right_foot);
   
+  var right_leg = new THREE.Mesh(leg, cover);
+  right_leg.position.set(-75, -100, 0);
+  scene.add(right_leg);
+  
   var left_foot = new THREE.Mesh(foot, cover);
-  left_foot.position.set(75, -125, 0);
+  left_foot.position.set(75, -200, 0);
   scene.add(left_foot);
+  
+  var left_leg = new THREE.Mesh(leg, cover);
+  left_leg.position.set(75, -100, 0);
+  scene.add(left_leg);
 
   // Now, show what the camera sees on the screen:
   renderer.render(scene, camera);
