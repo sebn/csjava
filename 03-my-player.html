@@ -69,9 +69,12 @@
   // scene.add(left_leg);
 
   // Now, animate what the camera sees on the screen:
+  var is_cartwheeling = false;
   function animate() {
     requestAnimationFrame(animate);
-    player.rotation.z = player.rotation.z + 0.05;
+    if (is_cartwheeling) {
+      player.rotation.z = player.rotation.z + 0.05;
+    }
     renderer.render(scene, camera);
   }
   animate();
