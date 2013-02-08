@@ -18,10 +18,14 @@
   document.body.appendChild(renderer.domElement);
 
   // ******** START CODING ON THE NEXT LINE ********
+  var marker = new THREE.Object3D();
+  scene.add(marker);
+  
   var cover = new THREE.MeshNormalMaterial();
   var body = new THREE.CylinderGeometry(1, 150, 150, 8);
   var player = new THREE.Mesh(body, cover);
-  scene.add(player);
+  marker.add(player);
+  marker.add(camera);
   
   var head_shape = new THREE.SphereGeometry(100);
   var head = new THREE.Mesh(head_shape, cover);
@@ -47,8 +51,6 @@
   var left_foot = new THREE.Mesh(foot, cover);
   left_foot.position.set(75, -200, 0);
   player.add(left_foot);
-  
-  player.add(camera);
   
   makeTreeAt(500, 0);
   makeTreeAt(-500, 0);
@@ -89,16 +91,16 @@
   document.addEventListener('keydown', function(event) {
     switch(event.keyCode) {
       case 37: // left
-        player.position.x = player.position.x - 50;
+        marker.position.x = marker.position.x - 50;
         break;
       case 38: // up
-        player.position.z = player.position.z - 50;
+        marker.position.z = marker.position.z - 50;
         break;
       case 39: // right
-        player.position.x = player.position.x + 50;
+        marker.position.x = marker.position.x + 50;
         break;
       case 40: // down
-        player.position.z = player.position.z + 50;
+        marker.position.z = marker.position.z + 50;
         break;
       case 67: // c
         is_cartwheeling = ! is_cartwheeling;
