@@ -70,10 +70,14 @@
 
   // Now, animate what the camera sees on the screen:
   var is_cartwheeling = false;
+  var is_flipping = false;
   function animate() {
     requestAnimationFrame(animate);
     if (is_cartwheeling) {
       player.rotation.z = player.rotation.z + 0.05;
+    }
+    if (is_flipping) {
+      player.rotation.x = player.rotation.x + 0.05;
     }
     renderer.render(scene, camera);
   }
