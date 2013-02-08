@@ -1,0 +1,84 @@
+<html>
+<body></body>
+<script src="vendor/Three.js"></script>
+<script src="vendor/ChromeFixes.js"></script>
+<script>
+  // This is where stuff in our game will happen:
+  var scene = new THREE.Scene();
+
+  // This is what sees the stuff:
+  var aspect_ratio = window.innerWidth / window.innerHeight;
+  var camera = new THREE.PerspectiveCamera(75, aspect_ratio, 1, 10000);
+  camera.position.z = 500;
+  scene.add(camera);
+
+  // This will draw what the camera sees onto the screen:
+  var renderer = new THREE.CanvasRenderer();
+  renderer.setSize(window.innerWidth, window.innerHeight);
+  document.body.appendChild(renderer.domElement);
+
+  // ******** START CODING ON THE NEXT LINE ********
+  var cover = new THREE.MeshNormalMaterial();
+  var body = new THREE.CylinderGeometry(1, 150, 150, 8);
+  var player = new THREE.Mesh(body, cover);
+  scene.add(player);
+  
+  var head_shape = new THREE.SphereGeometry(100);
+  var head = new THREE.Mesh(head_shape, cover);
+  head.position.set(0, 175, 0);
+  player.add(head);
+  
+  var hand = new THREE.SphereGeometry(50);
+  
+  var right_hand = new THREE.Mesh(hand, cover);
+  right_hand.position.set(-150, 25, 0);
+  player.add(right_hand);
+  
+  var left_hand = new THREE.Mesh(hand, cover);
+  left_hand.position.set(150, 25, 0);
+  player.add(left_hand);
+  
+  var foot = new THREE.SphereGeometry(50);
+  
+  var right_foot = new THREE.Mesh(foot, cover);
+  right_foot.position.set(-75, -200, 0);
+  player.add(right_foot);
+  
+  var left_foot = new THREE.Mesh(foot, cover);
+  left_foot.position.set(75, -200, 0);
+  player.add(left_foot);
+
+  // Now, animate what the camera sees on the screen:
+  var is_cartwheeling = false;
+  var is_flipping = false;
+  function animate() {
+    requestAnimationFrame(animate);
+    if (is_cartwheeling) {
+      player.rotation.z = player.rotation.z + 0.05;
+    }
+    if (is_flipping) {
+      player.rotation.x = player.rotation.x + 0.05;
+    }
+    renderer.render(scene, camera);
+  }
+  animate();
+  
+  document.addEventListener('keydown', function(event) {
+    switch(event.keyCode) {
+      case 37: // left
+        player.position.x = player.position.x - 5;
+        break;
+      case 38: // up
+        player.position.z = player.position.z - 5;
+        break;
+      case 39: // right
+        player.position.x = player.position.x + 5;
+        break;
+      case 40: // down
+        player.position.z = player.position.z + 5;
+        break;
+    }
+    event.preventDefault();
+  });
+</script><strong></strong>
+</html>
